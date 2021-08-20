@@ -1,0 +1,23 @@
+{
+  "name": "psalm",
+  "type": "php-file",
+  "url": "src/psalm.php",
+  "api-version": "1.0.0",
+  "requirements": {
+    "php": {
+      "php": "^7.3 || ^8.0",
+      "ext-dom": "*"
+    },
+    "tool": {
+      "psalm": {
+        "constraints": "^3.0 || ^4.0",
+        "sources": [
+          {
+            "type": "github",
+            "repository": "vimeo/psalm"
+          }
+        ]
+      }
+    }
+  }
+}
