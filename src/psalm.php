@@ -45,10 +45,15 @@ return new class implements DiagnosticsPluginInterface {
         $projectRoot = $environment->getProjectConfiguration()->getProjectRootPath();
         $tmpfile     = $environment->getUniqueTempFile($this, 'checkstyle.xml');
 
+        // pcntl & posix must be available for multiple threads.
+        $costs = ((extension_loaded('pcntl') && extension_loaded('posix')))
+            ? $environment->getAvailableThreads()
+            : 1;
+
         yield $environment
             ->getTaskFactory()
-            ->buildRunPhar('psalm', $this->buildArguments($config, $environment, $tmpfile))
-            ->withCosts($environment->getAvailableThreads())
+            ->buildRunPhar('psalm', $this->buildArguments($config, $tmpfile, $costs))
+            ->withCosts($costs)
             ->withWorkingDirectory($projectRoot)
             ->withOutputTransformer(CheckstyleReportAppender::transformFile($tmpfile, $projectRoot))
             ->build();
@@ -57,8 +62,8 @@ return new class implements DiagnosticsPluginInterface {
     /** @return string[] */
     private function buildArguments(
         PluginConfigurationInterface $config,
-        EnvironmentInterface $environment,
-        string $tempFile
+        string $tempFile,
+        int $threads
     ): array {
         $arguments = [];
 
@@ -82,7 +87,9 @@ return new class implements DiagnosticsPluginInterface {
             }
         }
 
-        $arguments[] = '--threads=' . $environment->getAvailableThreads();
+        if ($threads > 1) {
+            $arguments[] = '--threads=' . $threads;
+        }
         $arguments[] = '--report=' . $tempFile;
 
         return $arguments;

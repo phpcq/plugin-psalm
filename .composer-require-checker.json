@@ -5,6 +5,7 @@
     "array", "string", "int", "float", "bool", "iterable", "callable", "void", "object"
   ],
   "php-core-extensions" : [
+    "Core",
     "standard"
   ],
   "scan-files" : [
