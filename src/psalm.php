@@ -28,6 +28,10 @@ return new class implements DiagnosticsPluginInterface {
             ->withDefaultValue(false);
         $configOptionsBuilder
             ->describeStringOption('shepherd_host', 'Override shepherd host');
+        $configOptionsBuilder
+            ->describeBoolOption('auto_php_version', 'Automatically pass the current PHP version to psalm')
+            ->isRequired()
+            ->withDefaultValue(true);
 
         $configOptionsBuilder
             ->describeStringListOption(
@@ -66,6 +70,11 @@ return new class implements DiagnosticsPluginInterface {
         int $threads
     ): array {
         $arguments = [];
+
+        if ($config->getBool('auto_php_version')) {
+            $arguments[] = '--php-version=' .
+                implode('.', array_slice(explode('.', PHP_VERSION), 0, 3));
+        }
 
         foreach (['debug', 'debug_by_line'] as $flag) {
             if ($config->getBool($flag)) {
