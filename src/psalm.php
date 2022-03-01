@@ -72,8 +72,10 @@ return new class implements DiagnosticsPluginInterface {
         $arguments = [];
 
         if ($config->getBool('auto_php_version')) {
-            $arguments[] = '--php-version=' .
-                implode('.', array_slice(explode('.', PHP_VERSION), 0, 3));
+            if (1 !== preg_match('#^\d+.\d+.\d+#', PHP_VERSION, $version)) {
+                throw new RuntimeException('Unparsable PHP version: ' . PHP_VERSION);
+            }
+            $arguments[] = '--php-version=' . $version[0];
         }
 
         foreach (['debug', 'debug_by_line'] as $flag) {

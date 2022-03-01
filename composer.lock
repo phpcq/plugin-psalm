@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef8bd53e0c899f20dc51741ffc890651",
+    "content-hash": "99a18216033f8e02b003f5f41d0e7782",
     "packages": [
         {
             "name": "phpcq/plugin-api",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpcq/plugin-api.git",
-                "reference": "41a171cb56b3200881fe569c705dadd6de565bfd"
+                "reference": "afc5a467fcca3d4ac1bc39587b7b9f0a4e45a3ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpcq/plugin-api/zipball/41a171cb56b3200881fe569c705dadd6de565bfd",
-                "reference": "41a171cb56b3200881fe569c705dadd6de565bfd",
+                "url": "https://api.github.com/repos/phpcq/plugin-api/zipball/afc5a467fcca3d4ac1bc39587b7b9f0a4e45a3ab",
+                "reference": "afc5a467fcca3d4ac1bc39587b7b9f0a4e45a3ab",
                 "shasum": ""
             },
             "require": {
@@ -72,7 +72,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-25T09:14:32+00:00"
+            "time": "2022-01-13T10:56:37+00:00"
         }
     ],
     "packages-dev": [
@@ -82,12 +82,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpcq/runner-bootstrap.git",
-                "reference": "f0664b84c7324e2d41d653939ad3bf4f97aaf06f"
+                "reference": "aa201ff5719ddc2aad060b6a4b0689bacbca37c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpcq/runner-bootstrap/zipball/f0664b84c7324e2d41d653939ad3bf4f97aaf06f",
-                "reference": "f0664b84c7324e2d41d653939ad3bf4f97aaf06f",
+                "url": "https://api.github.com/repos/phpcq/runner-bootstrap/zipball/aa201ff5719ddc2aad060b6a4b0689bacbca37c6",
+                "reference": "aa201ff5719ddc2aad060b6a4b0689bacbca37c6",
                 "shasum": ""
             },
             "require": {
@@ -136,7 +136,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-08T18:33:27+00:00"
+            "time": "2022-01-21T11:15:13+00:00"
         },
         {
             "name": "phpcq/schema",
@@ -205,8 +205,9 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3 || ^8.0"
+        "php": "^7.3 || ^8.0",
+        "ext-pcre": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
